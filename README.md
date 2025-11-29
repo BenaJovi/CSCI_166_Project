@@ -1,30 +1,19 @@
-# CSCI_166_Project
+# CSCI_166_Project MS. Pac-Man Double and Dueling DQN 
 Deep Q-Learning on Atari game Ms-Pacman
-Project is adapted from:https://github.com/everestso/summer25/blob/main/c166f25_02b_dqn_pong.ipynb
+This project explores Deep Reinforcement Learning methods by applying Double DQN and Dueling DQN to the Atari game Ms. Pac-Man. We benchmark these advanced variants against a standard DQN baseline to evaluate how architectural improvements influence learning dynamics and gameplay performance.
 
-Deep Q-Learning on MsPacman
-A comparison of DQN, Double DQN, and Dueling Double DQN
-This project implements and compares three Deep Q-Learning architectures on the Atari game MsPacman using Gymnasium and PyTorch.
-The goal is to evaluate how different Q-network and target-update strategies affect learning performance, stability, and gameplay behavior.
+Project has been adapted from: https://github.com/everestso/summer25/blob/main/c166f25_02b_dqn_pong.ipynb
 
-Overview We train three agents: 
-Baseline DQN 
-Standard convolutional Q-network
-Experience replay 
-Target network updates Epsilon-greedy exploration
 
-Double DQN Uses online network for action selection 
-Uses target network for Q-value estimation 
-Reduces Q-value overestimation → more stable, slower early learning 
+# Project Overview
 
-Dueling Double DQN 
-Shared convolutional encoder 
-Separate Value and Advantage streams 
-Combines with Double DQN target selection 
-Helps on games with state redundancy (but needs large training budgets) 
+We compare three Deep Q-Learning architectures on the ALE/MsPacman-v5 domain:
 
-All three agents use the same preprocessing pipeline: 
-AtariWrapper (grayscale, resize, frame-skip) 
-Frame stacking (4 frames) 
-Image→PyTorch channel reordering 
-FIRE reset wrapper
+1. Baseline DQN: CNN-based Q-function approximator.
+
+2. Double DQN: Uses online network for action selection and target network for evaluation to reduce overestimation.
+
+3. Dueling DQN: Factorizes Q-values into Value and Advantage components for richer state evaluation.
+
+Agents operate on 84×84 grayscale stacked frames (4 frames) and choose between 5 discrete actions.
+The objective is to maximize cumulative reward by collecting pellets and avoiding enemy ghosts.
